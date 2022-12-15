@@ -6,6 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".CreateUser">
 
+    <EditText
+        android:id="@+id/inputPwsConfirmReg2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/black_box"
+        android:ems="10"
+        android:hint="Conferma Password"
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:paddingTop="13dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="13dp"
+        app:layout_constraintEnd_toEndOf="@+id/inputPsw"
+        app:layout_constraintStart_toStartOf="@+id/inputPsw"
+        app:layout_constraintTop_toBottomOf="@+id/inputPsw" />
+
     <TextView
         android:id="@+id/TextSignup"
         android:layout_width="wrap_content"
@@ -25,7 +42,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/black_box"
         android:ems="10"
@@ -108,41 +125,41 @@
         app:layout_constraintTop_toBottomOf="@+id/inputPhone" />
 
     <EditText
-        android:id="@+id/inputPwsConfirmReg"
+        android:id="@+id/inputAddressUser"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/black_box"
         android:ems="10"
-        android:hint="Conferma Password"
+        android:hint="Indirizzo"
         android:inputType="textPassword"
         android:paddingLeft="20dp"
         android:paddingTop="13dp"
         android:paddingRight="20dp"
         android:paddingBottom="13dp"
-        app:layout_constraintEnd_toEndOf="@+id/inputPsw"
-        app:layout_constraintStart_toStartOf="@+id/inputPsw"
-        app:layout_constraintTop_toBottomOf="@+id/inputPsw" />
+        app:layout_constraintEnd_toEndOf="@+id/inputPwsConfirmReg2"
+        app:layout_constraintStart_toStartOf="@+id/inputPwsConfirmReg2"
+        app:layout_constraintTop_toBottomOf="@+id/inputPwsConfirmReg2" />
 
     <Button
         android:id="@+id/btnNextPageReg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Avanti"
+        android:text="Salva"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputPwsConfirmReg" />
+        app:layout_constraintTop_toBottomOf="@+id/inputAddressUser" />
 
     <TextView
         android:id="@+id/alreadyHaveaccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="Hai già un account?"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputPwsConfirmReg"
-        app:layout_constraintTop_toBottomOf="@+id/inputPwsConfirmReg" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputAddressUser" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

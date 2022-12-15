@@ -19,20 +19,19 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.UUID;
+
 public class CreateUser extends AppCompatActivity {
 
     TextView alreadyHaveaccount;
-    EditText inputEmail, inputPassword, inputConfirmPsw, inputName, inputSurname, inputPhoneNumber;
+    EditText inputEmail, inputPassword, inputConfirmPsw, inputName, inputSurname, inputPhoneNumber, inputAddress;
     Button btnNextPageRegistration;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    ProgressDialog progressDialog;
 
-    private String email, password1, password2, name, lastname, phoneNumber;
+    private String email, password1, password2, name, lastname, phoneNumber, address;
 
     private FirebaseFirestore db;
 
-    //FirebaseAuth mAuth;
-    //FirebaseUser mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +48,10 @@ public class CreateUser extends AppCompatActivity {
         inputEmail=findViewById(R.id.inputEmailRegistration);
         inputPhoneNumber=findViewById(R.id.inputPhone);
         inputPassword=findViewById(R.id.inputPsw);
-        inputConfirmPsw=findViewById(R.id.inputPwsConfirmReg);
+        inputConfirmPsw=findViewById(R.id.inputPwsConfirmReg2);
+        inputAddress = findViewById(R.id.inputAddressUser);
         btnNextPageRegistration=findViewById(R.id.btnNextPageReg);
-        progressDialog=new ProgressDialog(this);
-        //mAuth=FirebaseAuth.getInstance();
-        //mUser=mAuth.getCurrentUser();
+
 
         alreadyHaveaccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +76,7 @@ public class CreateUser extends AppCompatActivity {
         name=inputName.getText().toString();
         lastname =inputSurname.getText().toString();
         phoneNumber=inputPhoneNumber.getText().toString();
+        address=inputAddress.getText().toString();
 
         if(!email.matches(emailPattern)){
             inputEmail.setError("Enter correct email");
@@ -92,33 +91,17 @@ public class CreateUser extends AppCompatActivity {
         } else if (!password1.equals(password2)) {
             inputConfirmPsw.setError("Password not match");
         } else {
-            /*progressDialog.setMessage("Please wait while Registration");
-            progressDialog.setTitle("Registration");
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.show();*/
 
-            addDataToFirestore(name, lastname, email, password1);
+            addDataToFirestore(name, lastname, email, password1, address);
 
-            /*mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        progressDialog.dismiss();
-                        sendUsertoNextActivity();
-                        Toast.makeText(CreateUser.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                    }else{
-                        progressDialog.dismiss();
-                        Toast.makeText(CreateUser.this, ""+task.getException(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });*/
         }
     }
 
-    private void addDataToFirestore(String name, String lastname, String email, String password1) {
+    private void addDataToFirestore(String name, String lastname, String email, String password1, String address) {
         CollectionReference dbUsers = db.collection("Utenti");
-        // String Id, String Surname, String Email, String Address, String Name, String Password, Integer Points, String PhoneNumber
-        Users user = new Users("1", lastname, email, "", name, password1, 0, phoneNumber);
+        UUID uuidObj = UUID.randomUUID();
+        Users user = new Users(String.valueOf(uuidObj), lastname, email, address, name, password1, 0, phoneNumber);
+
 
         dbUsers.add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
@@ -134,7 +117,7 @@ public class CreateUser extends AppCompatActivity {
     }
 
     private void sendUsertoNextActivity() {
-        Intent intent = new Intent(CreateUser.this, LocationUser.class);
+        Intent intent = new Intent(CreateUser.this, Login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
