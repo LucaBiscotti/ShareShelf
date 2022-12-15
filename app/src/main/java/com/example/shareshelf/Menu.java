@@ -4,6 +4,7 @@ import static com.example.shareshelf.R.menu.activity_main_drawer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.View;
@@ -25,6 +26,38 @@ public class Menu extends AppCompatActivity {
         to_profile = findViewById(R.id.nav_profile);
         to_myActivity = findViewById(R.id.nav_myActivity);
         to_logout = findViewById(R.id.nav_logout);
+
+        to_bacheca.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu.this, Bacheca.class);
+                startActivity(intent);
+            }
+        });
+
+        to_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu.this, MyProfile.class);
+                startActivity(intent);
+            }
+        });
+
+        to_myActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu.this, MyNoticeboard.class);
+                startActivity(intent);
+            }
+        });
+
+        to_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu.this, Logout.class);
+                startActivity(intent);
+            }
+        });
 
         return true;
     }
