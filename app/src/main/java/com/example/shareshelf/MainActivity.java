@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendUsertoNextActivity() {
         Intent intent = new Intent(MainActivity.this, Login.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 }
