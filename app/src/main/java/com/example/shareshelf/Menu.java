@@ -1,7 +1,5 @@
 package com.example.shareshelf;
 
-import static com.example.shareshelf.R.menu.activity_main_drawer;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,7 +9,8 @@ import android.view.View;
 
 public class Menu extends AppCompatActivity {
 
-    View to_bacheca, to_profile, to_myActivity, to_logout;
+    View to_bacheca, to_myActivity, to_profile, to_logout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +20,7 @@ public class Menu extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(activity_main_drawer, menu);
+        menuInflater.inflate(R.menu.activity_main_drawer, menu);
         to_bacheca = findViewById(R.id.nav_home);
         to_profile = findViewById(R.id.nav_profile);
         to_myActivity = findViewById(R.id.nav_myActivity);
