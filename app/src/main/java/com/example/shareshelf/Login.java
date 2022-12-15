@@ -16,7 +16,6 @@ public class Login extends AppCompatActivity {
     EditText inputEmail, inputPassword;
     Button btnLogin;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    ProgressDialog progressDialog;
 
     //FirebaseAuth mAuth;
     //FirebaseUser mUser;
@@ -31,9 +30,7 @@ public class Login extends AppCompatActivity {
         inputEmail=findViewById(R.id.inputEmail);
         inputPassword=findViewById(R.id.inputPassword);
         btnLogin=findViewById(R.id.btnLogin);
-        progressDialog=new ProgressDialog(this);
-        //mAuth=FirebaseAuth.getInstance();
-        // mUser=mAuth.getCurrentUser();
+
 
 
         createnewAccount.setOnClickListener(new View.OnClickListener() {
@@ -60,10 +57,8 @@ public class Login extends AppCompatActivity {
         }else if(password.isEmpty() || password.length()<6){
             inputPassword.setError("Enter propper password");
         }else {
-            progressDialog.setMessage("Please wait while Login");
-            progressDialog.setTitle("Login");
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.show();
+            sendUsertoNextActivity();
+
 
           /*  mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override

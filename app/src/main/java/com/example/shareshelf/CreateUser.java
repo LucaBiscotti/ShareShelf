@@ -107,6 +107,7 @@ public class CreateUser extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 Toast.makeText(CreateUser.this, "Your user has been added", Toast.LENGTH_SHORT).show();
+                sendUsertoNextActivity();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
