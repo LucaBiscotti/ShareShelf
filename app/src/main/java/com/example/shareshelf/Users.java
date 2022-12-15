@@ -3,7 +3,7 @@ package com.example.shareshelf;
 public class Users {
 
     // variables for storing our data.
-    private String Name, Surname, Email, PhoneNumber, Password, Address;
+    private String Name, Surname, Email, PhoneNumber, Password, Address, Id;
     private Integer Points;
 
     public Users(){
@@ -12,7 +12,8 @@ public class Users {
     }
 
     // Constructor for all variables.
-    public Users(String Surname, String Email, String Address, String Name, String Password, Integer Points, String PhoneNumber) {
+    public Users(String Id, String Surname, String Email, String Address, String Name, String Password, Integer Points, String PhoneNumber) {
+        this.Id = Id;
         this.Name = Name;
         this.Surname = Surname;
         this.Email = Email;
@@ -23,6 +24,8 @@ public class Users {
     }
 
     // getter methods for all variables.
+    public String getId() { return Id; }
+
     public String getName() {
         return Name;
     }
@@ -52,6 +55,8 @@ public class Users {
     }
 
     // setter method for all variables.
+    public void setId(String Id) {this.Id = Id;}
+
     public void setName(String Name) {
         this.Name = Name;
     }

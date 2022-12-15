@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Noticeboard {
 
-    private String Category, Description, IDCreator, Type, Title;
+    private String Category, Description, IDCreator, Type, Title, Id;
     private Date DateStart;
     private Integer Duration;
 
@@ -14,7 +14,8 @@ public class Noticeboard {
     }
 
     // Constructor for all variables.
-    public Noticeboard(String Category, Date DateStart, String Description, Integer Duration, String IDCreator, String Type, String Title){
+    public Noticeboard(String Id, String Category, Date DateStart, String Description, Integer Duration, String IDCreator, String Type, String Title){
+        this.Id = Id;
         this.Category = Category;
         this.DateStart = DateStart;
         this.Description = Description;
@@ -25,6 +26,8 @@ public class Noticeboard {
     }
 
     // getter methods for all variables.
+    public String getId(){return Id;}
+
     public String getCategory() {
         return Category;
     }
@@ -54,6 +57,8 @@ public class Noticeboard {
     }
 
     // setter method for all variables.
+    public void setId(String Id) {this.Id = Id;}
+
     public void setCategory(String Category) {
         this.Category = Category;
     }

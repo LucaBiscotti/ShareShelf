@@ -1,7 +1,7 @@
 package com.example.shareshelf;
 
 public class Feedback {
-    private String Text, IdOfferer, IdUser;
+    private String Text, IdOfferer, IdUser, Id;
     private Integer Rate;
 
     public Feedback(){
@@ -10,7 +10,8 @@ public class Feedback {
     }
 
     // Constructor for all variables.
-    public Feedback(String IdOfferer, String IdUser, String Text, Integer Rate){
+    public Feedback(String Id, String IdOfferer, String IdUser, String Text, Integer Rate){
+        this.Id = Id;
         this.IdOfferer = IdOfferer;
         this.IdUser = IdUser;
         this.Text = Text;
@@ -18,6 +19,8 @@ public class Feedback {
     }
 
     // getter methods for all variables.
+    public String getId(){ return Id; }
+
     public String getIdOfferer() {
         return IdOfferer;
     }
@@ -35,6 +38,8 @@ public class Feedback {
     }
 
     // setter method for all variables.
+    public void setId(String Id){ this.Id = Id; }
+
     public void setIdOfferer(String IdOfferer) {
         this.IdOfferer = IdOfferer;
     }

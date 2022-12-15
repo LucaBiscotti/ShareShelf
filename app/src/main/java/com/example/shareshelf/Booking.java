@@ -1,7 +1,7 @@
 package com.example.shareshelf;
 
 public class Booking {
-    private String IdNoticeboard, IdCandidate;
+    private String IdNoticeboard, IdCandidate, Id;
 
     public Booking(){
         // empty constructor
@@ -9,12 +9,15 @@ public class Booking {
     }
 
     // Constructor for all variables.
-    public Booking(String IdNoticeboard, String IdCandidate){
+    public Booking(String Id, String IdNoticeboard, String IdCandidate){
+        this.Id = Id;
         this.IdNoticeboard = IdNoticeboard;
         this.IdCandidate = IdCandidate;
     }
 
     // getter methods for all variables.
+    public String getId(){ return Id;}
+
     public String getIdNoticeboard() {
         return IdNoticeboard;
     }
@@ -24,6 +27,8 @@ public class Booking {
     }
 
     // setter method for all variables.
+    public void setId(String Id){ this.Id = Id; }
+
     public void setIdNoticeboard(String IdNoticeboard) {
         this.IdNoticeboard = IdNoticeboard;
     }
