@@ -1,5 +1,6 @@
-# ShareShelf (gruppo I Softueristi)
-Progetto in android per il corso universitario di Ingegneria del Software
+# ShareShelf
+gruppo I Softueristi
+Progetto in android per il corso Ingegneria del Software
 
 COSA è STATO GIà IMPLEMENTATO
 Abbiamo implementato Login, Signup, Logout, Bacheca (Home), le classi che compongono il database. Abbiamo creato i collegamenti tra le varie pagine.
