@@ -23,6 +23,16 @@ public class Users {
         this.Points = Points;
     }
 
+    // Constructor for all variables.
+    public Users(String Surname, String Email, String Address, String Name, Integer Points, String PhoneNumber) {
+        this.Name = Name;
+        this.Surname = Surname;
+        this.Email = Email;
+        this.PhoneNumber = PhoneNumber;
+        this.Address = Address;
+        this.Points = Points;
+    }
+
     // getter methods for all variables.
     public String getId() { return Id; }
 
