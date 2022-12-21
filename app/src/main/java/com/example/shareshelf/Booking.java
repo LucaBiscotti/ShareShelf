@@ -9,8 +9,8 @@ public class Booking {
     }
 
     // Constructor for all variables.
-    public Booking(String Id, String IdNoticeboard, String IdCandidate){
-        this.Id = Id;
+    public Booking(/*String Id,*/ String IdNoticeboard, String IdCandidate){
+        //this.Id = Id;
         this.IdNoticeboard = IdNoticeboard;
         this.IdCandidate = IdCandidate;
     }

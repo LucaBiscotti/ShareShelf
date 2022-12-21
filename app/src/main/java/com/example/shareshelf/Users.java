@@ -12,8 +12,8 @@ public class Users {
     }
 
     // Constructor for all variables.
-    public Users(String Id, String Surname, String Email, String Address, String Name, String Password, Integer Points, String PhoneNumber) {
-        this.Id = Id;
+    public Users(/*String Id,*/ String Surname, String Email, String Address, String Name, String Password, Integer Points, String PhoneNumber) {
+        //this.Id = Id;
         this.Name = Name;
         this.Surname = Surname;
         this.Email = Email;

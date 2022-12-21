@@ -10,8 +10,8 @@ public class Feedback {
     }
 
     // Constructor for all variables.
-    public Feedback(String Id, String IdOfferer, String IdUser, String Text, Integer Rate){
-        this.Id = Id;
+    public Feedback(/*String Id,*/ String IdOfferer, String IdUser, String Text, Integer Rate){
+        //this.Id = Id;
         this.IdOfferer = IdOfferer;
         this.IdUser = IdUser;
         this.Text = Text;

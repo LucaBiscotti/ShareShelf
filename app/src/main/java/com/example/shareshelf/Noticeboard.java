@@ -14,8 +14,8 @@ public class Noticeboard {
     }
 
     // Constructor for all variables.
-    public Noticeboard(String Id, String Category, Date DateStart, String Description, Integer Duration, String IDCreator, String Type, String Title){
-        this.Id = Id;
+    public Noticeboard(/*String Id,*/ String Category, Date DateStart, String Description, Integer Duration, String IDCreator, String Type, String Title){
+        //this.Id = Id;
         this.Category = Category;
         this.DateStart = DateStart;
         this.Description = Description;
