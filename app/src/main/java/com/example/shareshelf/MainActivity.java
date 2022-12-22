@@ -15,8 +15,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendUsertoNextActivity() {
-        Intent intent = new Intent(MainActivity.this, Login.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        if(SaveSharedPreference.getUserName(MainActivity.this).length() == 0) {
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+        else {
+            Intent intent = new Intent(MainActivity.this, Bacheca.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
     }
 }

@@ -31,6 +31,7 @@ public class Logout extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SaveSharedPreference.clearUserName(Logout.this);
                 Intent intent = new Intent(Logout.this, Login.class);
                 startActivity(intent);
             }

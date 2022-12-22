@@ -100,7 +100,7 @@ public class CreateUser extends AppCompatActivity {
     private void addDataToFirestore(String name, String lastname, String email, String password1, String address) {
         CollectionReference dbUsers = db.collection("Utenti");
         UUID uuidObj = UUID.randomUUID();
-        Users user = new Users(/*String.valueOf(uuidObj), */lastname, email, address, name, password1, 0, phoneNumber);
+        Users user = new Users(lastname, email, address, name, password1, 0, phoneNumber);
 
 
         dbUsers.add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {

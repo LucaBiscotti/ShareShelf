@@ -142,9 +142,10 @@
         android:id="@+id/btn_toFeedback"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:text="Lista annunci"
         app:layout_constraintEnd_toEndOf="@+id/btn_toBookedNoticeboard"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/btn_toBookedNoticeboard"
         app:layout_constraintTop_toBottomOf="@+id/btn_toBookedNoticeboard" />
 
@@ -155,7 +156,7 @@
         android:layout_marginStart="16dp"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="TextView"
+        android:text="metti il numero"
         app:layout_constraintStart_toEndOf="@+id/TextViewPhone"
         app:layout_constraintTop_toTopOf="@+id/TextViewPhone" />
 

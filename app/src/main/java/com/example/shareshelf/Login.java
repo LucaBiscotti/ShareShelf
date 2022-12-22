@@ -77,6 +77,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void sendUsertoNextActivity() {
+        SaveSharedPreference.setUserName(Login.this, inputEmail.getText().toString());
         Intent intent = new Intent(Login.this, Bacheca.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

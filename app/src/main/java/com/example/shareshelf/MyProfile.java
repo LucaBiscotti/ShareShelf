@@ -102,9 +102,11 @@ public class MyProfile extends AppCompatActivity {
         Users user = new Users(Surname, Email, Address, Name, Integer.parseInt(Points), Phone);
 
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        /*
         FirebaseFirestore ref = FirebaseFirestore.getInstance();
         CollectionReference usersRef = ref.collection("Utenti");
         usersRef.document(uid).set(user);
+        */
 
         db.collection("Utenti").document(uid).set(user);
 
