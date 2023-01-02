@@ -1,5 +1,6 @@
 package com.example.shareshelf;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -10,12 +11,26 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class Login extends AppCompatActivity {
     TextView createnewAccount;
     EditText inputEmail, inputPassword;
     Button btnLogin;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
 
     //FirebaseAuth mAuth;
     //FirebaseUser mUser;
@@ -24,6 +39,9 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
         createnewAccount = findViewById(R.id.createNewAccount);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -57,22 +75,20 @@ public class Login extends AppCompatActivity {
         }else if(password.isEmpty() || password.length()<6){
             inputPassword.setError("Enter propper password");
         }else {
-            sendUsertoNextActivity();
-
-
-          /*  mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            fAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        progressDialog.dismiss();
-                        sendUsertoNextActivity();
-                        Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                    }else{
-                        progressDialog.dismiss();
-                        Toast.makeText(MainActivity.this, ""+task.getException(), Toast.LENGTH_SHORT).show();
-                    }
+                public void onSuccess(AuthResult authResult) {
+                    Toast.makeText(Login.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
+                    sendUsertoNextActivity();
                 }
-            });*/
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(Login.this, "Error" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
         }
     }
 
@@ -82,4 +98,6 @@ public class Login extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+
+
 }

@@ -1,24 +1,33 @@
 package com.example.shareshelf;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class CreateUser extends AppCompatActivity {
@@ -31,6 +40,9 @@ public class CreateUser extends AppCompatActivity {
     private String email, password1, password2, name, lastname, phoneNumber, address;
 
     private FirebaseFirestore db;
+    FirebaseAuth fAuth;
+
+    String userId;
 
 
     @Override
@@ -39,6 +51,7 @@ public class CreateUser extends AppCompatActivity {
         setContentView(R.layout.activity_create_user);
 
         db = FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
 
         alreadyHaveaccount=findViewById(R.id.alreadyHaveaccount);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -70,12 +83,12 @@ public class CreateUser extends AppCompatActivity {
     }
 
     private void PerforAuth() {
-        email=inputEmail.getText().toString();
+        email=inputEmail.getText().toString().trim();
         password1=inputPassword.getText().toString();
         password2=inputPassword.getText().toString();
-        name=inputName.getText().toString();
-        lastname =inputSurname.getText().toString();
-        phoneNumber=inputPhoneNumber.getText().toString();
+        name=inputName.getText().toString().trim();
+        lastname =inputSurname.getText().toString().trim();
+        phoneNumber=inputPhoneNumber.getText().toString().trim();
         address=inputAddress.getText().toString();
 
         if(!email.matches(emailPattern)){
@@ -98,8 +111,10 @@ public class CreateUser extends AppCompatActivity {
     }
 
     private void addDataToFirestore(String name, String lastname, String email, String password1, String address) {
-        CollectionReference dbUsers = db.collection("Utenti");
-        UUID uuidObj = UUID.randomUUID();
+
+      //  UUID uuidObj = UUID.randomUUID();
+        /*CollectionReference dbUsers = db.collection("Utenti");
+
         Users user = new Users(lastname, email, address, name, password1, 0, phoneNumber);
 
 
@@ -113,6 +128,37 @@ public class CreateUser extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(CreateUser.this, "Fail to add user \n" + e, Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
+        fAuth.createUserWithEmailAndPassword(email, password1).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                FirebaseUser userId = fAuth.getCurrentUser();
+                Toast.makeText(CreateUser.this, "Account created", Toast.LENGTH_SHORT).show();
+                DocumentReference df = db.collection("Utenti").document(userId.getUid());
+                Users user = new Users(lastname, email, address, name, password1, 0, phoneNumber);
+                //df.set(user);
+                df.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d(TAG, "Inserito con successo" + userId);
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "On failure" + e.toString());
+                    }
+                });
+
+                sendUsertoNextActivity();
+                //startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(CreateUser.this, "Failed to create account" +e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
