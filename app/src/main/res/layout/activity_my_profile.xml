@@ -156,7 +156,7 @@
         android:layout_marginStart="16dp"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="metti il numero"
+        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/TextViewPhone"
         app:layout_constraintTop_toTopOf="@+id/TextViewPhone" />
 

@@ -6,12 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.database.ChildEventListener;
@@ -22,14 +26,25 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.firestore.auth.User;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MyProfile extends AppCompatActivity {
 
     ImageView menu, modifyAccount;
     Button mybooked, myfeedback, donation;
     TextView name, surname, phonenumber, email, rating, points, address;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +87,6 @@ public class MyProfile extends AppCompatActivity {
             }
         });
 
-        //FirebaseDatabase databaseProfile = FirebaseDatabase.getInstance();
-
         name = findViewById(R.id.TextViewName);
         surname = findViewById(R.id.TextViewLastname);
         phonenumber = findViewById(R.id.tv_phoneNumber);
@@ -82,51 +95,58 @@ public class MyProfile extends AppCompatActivity {
         points = findViewById(R.id.tv_points);
         address = findViewById(R.id.tv_address);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        // -------------- DOBBIAMO VEDERE ----------------
-        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-                .setPersistenceEnabled(true)
-                .build();
-        db.setFirestoreSettings(settings);
-        // ------------------------------------------------
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
-        String Name = name.getText().toString().trim();
-        String Surname = surname.getText().toString().trim();
-        String Phone = phonenumber.getText().toString().trim();
-        String Rating = rating.getText().toString().trim();
-        String Email = email.getText().toString().trim();
-        String Points = points.getText().toString().trim();
-        String Address = address.getText().toString().trim();
+        userId = fAuth.getCurrentUser().getUid();
 
-        Users user = new Users(Surname, Email, Address, Name, Integer.parseInt(Points), Phone);
 
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        /*
-        FirebaseFirestore ref = FirebaseFirestore.getInstance();
-        CollectionReference usersRef = ref.collection("Utenti");
-        usersRef.document(uid).set(user);
-        */
 
-        db.collection("Utenti").document(uid).set(user);
+        fStore.collection("Utenti").document(userId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getData()));
+                    Map<String, Object> user = new HashMap<>();
+                    user = task.getResult().getData();
 
-        name.setText(user.getName());
-        surname.setText(user.getSurname());
-        phonenumber.setText(user.getPhoneNumber());
-        email.setText(user.getEmail());
-        points.setText(String.valueOf(user.getPoints()));
-        address.setText(user.getAddress());
-        rating.setText("0");
+                    if(user.containsKey("name")){
+                        Object val = user.get("name");
+                        name.setText(val.toString());
+                    }
+                    if(user.containsKey("surname")){
+                        Object val = user.get("surname");
+                        surname.setText(val.toString());
+                    }
+                    if(user.containsKey("email")){
+                        Object val = user.get("email");
+                        email.setText(val.toString());
+                    }
+                    if(user.containsKey("points")){
+                        Object val = user.get("points");
+                        points.setText(val.toString());
+                    }
+                    if(user.containsKey("address")){
+                        Object val = user.get("address");
+                        address.setText(val.toString());
+                    }
+                    if(user.containsKey("phoneNumber")){
+                        Object val = user.get("phoneNumber");
+                        phonenumber.setText(val.toString());
+                    }
+                    rating.setText("0");
+
+                }
+            }
+        });
+
+
 
     }
-
-
-
-
-
-
-
-
 
 
 
