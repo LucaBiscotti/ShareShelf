@@ -1,89 +1,102 @@
 package com.example.shareshelf;
 
+import com.google.firebase.firestore.DocumentReference;
+
 import java.util.Date;
 
 public class Noticeboard {
 
-    private String Category, Description, IDCreator, Type, Title, Id;
-    private Date DateStart;
-    private Integer Duration;
-
+    private String Categoria, Descrizione, Tipo, Titolo, Id, Stato;
+    private Long Durata;
+    private DocumentReference IDCreatore;
+    private Date DataInizio;
     public Noticeboard(){
         // empty constructor
         // required for Firebase.
     }
 
     // Constructor for all variables.
-    public Noticeboard(/*String Id,*/ String Category, Date DateStart, String Description, Integer Duration, String IDCreator, String Type, String Title){
+    public Noticeboard(/*String Id,*/ String Category, Date DateStart, String Description,
+                                      Long Duration, DocumentReference IDCreator, String Type,
+                                      String Title, String Stato){
         //this.Id = Id;
-        this.Category = Category;
-        this.DateStart = DateStart;
-        this.Description = Description;
-        this.Duration = Duration;
-        this.IDCreator = IDCreator;
-        this.Type = Type;
-        this.Title = Title;
+        this.Categoria = Category;
+        this.DataInizio = DateStart;
+        this.Descrizione = Description;
+        this.Durata = Duration;
+        this.IDCreatore = IDCreator;
+        this.Tipo = Type;
+        this.Titolo = Title;
+        this.Stato = Stato;
     }
 
     // getter methods for all variables.
-    public String getId(){return Id;}
+    public String getId() {return Id;}
 
-    public String getCategory() {
-        return Category;
+    public String getCategoria() {
+        return Categoria;
     }
 
-    public Date getDateStart(){
-        return DateStart;
+    public Date getDataInizio(){
+        return DataInizio;
     }
 
-    public String getDescription(){
-        return Description;
+    public String getDescrizione(){
+        return Descrizione;
     }
 
-    public Integer getDuration(){
-        return Duration;
+    public Long getDurata(){
+        return Durata;
     }
 
-    public String getIDCreator(){
-        return IDCreator;
+    public DocumentReference getIDCreatore(){
+        return IDCreatore;
     }
 
-    public String getType(){
-        return Type;
+    public String getTipo(){
+        return Tipo;
     }
 
-    public String getTitle(){
-        return Title;
+    public String getTitolo(){
+        return Titolo;
     }
 
     // setter method for all variables.
     public void setId(String Id) {this.Id = Id;}
 
-    public void setCategory(String Category) {
-        this.Category = Category;
+    public void setCategoria(String Category) {
+        this.Categoria = Category;
     }
 
-    public void setDateStart(Date DateStart){
-        this.DateStart = DateStart;
+    public void setDataInizio(Date DateStart){
+        this.DataInizio = DateStart;
     }
 
-    public void setDescription(String Description){
-        this.Description = Description;
+    public void setDescrizione(String Description){
+        this.Descrizione = Description;
     }
 
-    public void setDuration(Integer Duration){
-        this.Duration = Duration;
+    public void setDurata(Long Duration){
+        this.Durata = Duration;
     }
 
-    public void setIDCreator(String IDCreator){
-        this.IDCreator = IDCreator;
+    public void setIDCreatore(DocumentReference IDCreatore){
+        this.IDCreatore = IDCreatore;
     }
 
-    public void setType(String Type){
-        this.Type = Type;
+    public void setTipo(String Type){
+        this.Tipo = Type;
     }
 
-    public void setTitle(String Title){
-        this.Title = Title;
+    public void setTitolo(String Title){
+        this.Titolo = Title;
+    }
+
+    public String getStato() {
+        return Stato;
+    }
+
+    public void setStato(String stato) {
+        Stato = stato;
     }
 }
