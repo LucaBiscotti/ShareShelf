@@ -11,6 +11,14 @@ public class Users {
         // required for Firebase.
     }
 
+    public Users(String Surname, String Email, String Address, String Name, String PhoneNumber)
+    {
+        this.Name = Name;
+        this.Surname = Surname;
+        this.Email = Email;
+        this.PhoneNumber = PhoneNumber;
+        this.Address = Address;
+    }
     // Constructor for all variables.
     public Users(String Surname, String Email, String Address, String Name, String Password, Integer Points, String PhoneNumber) {
         this.Name = Name;

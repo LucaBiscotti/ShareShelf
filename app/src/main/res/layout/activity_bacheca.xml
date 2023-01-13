@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/include5"
+        android:id="include5"
         layout="@layout/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
