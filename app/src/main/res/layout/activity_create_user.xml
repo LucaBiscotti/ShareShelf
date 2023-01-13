@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".CreateUser">
 
     <EditText
         android:id="@+id/inputPwsConfirmReg2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/black_box"
+        android:drawableLeft="@drawable/ic_baseline_password_24"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Conferma Password"
         android:inputType="textPassword"
@@ -19,6 +22,8 @@
         android:paddingTop="13dp"
         android:paddingRight="20dp"
         android:paddingBottom="13dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/inputPsw"
         app:layout_constraintStart_toStartOf="@+id/inputPsw"
         app:layout_constraintTop_toBottomOf="@+id/inputPsw" />
@@ -27,24 +32,27 @@
         android:id="@+id/TextSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="72dp"
         android:text="Registrazione"
-        android:textColor="@color/black"
-        android:textSize="44sp"
+        android:textColor="@color/white"
+        android:textSize="34sp"
 
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.325"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/inputName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="278dp"
+        android:layout_height="51dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/black_box"
+        android:drawableLeft="@drawable/ic_baseline_account_circle_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="#FFFFFF"
         android:ems="10"
         android:hint="Nome"
         android:inputType="textPersonName"
@@ -52,16 +60,22 @@
         android:paddingTop="13dp"
         android:paddingRight="20dp"
         android:paddingBottom="13dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextSignup" />
+        tools:layout_editor_absoluteY="147dp" />
 
     <EditText
         android:id="@+id/inputSurname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/black_box"
+        android:drawableLeft="@drawable/ic_baseline_account_circle_24"
+        android:drawableTint="#FFFFFF"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Cognome"
         android:inputType="textPersonName"
@@ -69,7 +83,10 @@
         android:paddingTop="13dp"
         android:paddingRight="20dp"
         android:paddingBottom="13dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/inputName"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/inputName"
         app:layout_constraintTop_toBottomOf="@+id/inputName" />
 
@@ -77,8 +94,11 @@
         android:id="@+id/inputEmailRegistration"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/black_box"
+        android:drawableLeft="@android:drawable/sym_action_email"
+        android:drawableTint="#FFFFFF"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -86,6 +106,8 @@
         android:paddingTop="13dp"
         android:paddingRight="20dp"
         android:paddingBottom="13dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/inputSurname"
         app:layout_constraintStart_toStartOf="@+id/inputSurname"
         app:layout_constraintTop_toBottomOf="@+id/inputSurname" />
@@ -94,8 +116,10 @@
         android:id="@+id/inputPhone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/black_box"
+        android:drawableLeft="@android:drawable/stat_sys_phone_call"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Telefono"
         android:inputType="phone"
@@ -103,6 +127,8 @@
         android:paddingTop="13dp"
         android:paddingRight="20dp"
         android:paddingBottom="13dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/inputEmailRegistration"
         app:layout_constraintStart_toStartOf="@+id/inputEmailRegistration"
         app:layout_constraintTop_toBottomOf="@+id/inputEmailRegistration" />
@@ -111,8 +137,10 @@
         android:id="@+id/inputPsw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/black_box"
+        android:drawableLeft="@drawable/ic_baseline_password_24"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -120,46 +148,32 @@
         android:paddingTop="13dp"
         android:paddingRight="20dp"
         android:paddingBottom="13dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/inputPhone"
         app:layout_constraintStart_toStartOf="@+id/inputPhone"
         app:layout_constraintTop_toBottomOf="@+id/inputPhone" />
 
-    <EditText
-        android:id="@+id/inputAddressUser"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/black_box"
-        android:ems="10"
-        android:hint="Indirizzo"
-        android:inputType="textPassword"
-        android:paddingLeft="20dp"
-        android:paddingTop="13dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="13dp"
-        app:layout_constraintEnd_toEndOf="@+id/inputPwsConfirmReg2"
-        app:layout_constraintStart_toStartOf="@+id/inputPwsConfirmReg2"
-        app:layout_constraintTop_toBottomOf="@+id/inputPwsConfirmReg2" />
 
     <Button
         android:id="@+id/btnNextPageReg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="93dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="32dp"
         android:text="Avanti"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputAddressUser" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/alreadyHaveaccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="136dp"
         android:text="Hai già un account?"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputAddressUser" />
+        tools:layout_editor_absoluteY="614dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
