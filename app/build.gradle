@@ -58,5 +58,5 @@ dependencies {
 
     // This dependency includes all material components of the android app.
     //implementation 'com.google.android.material:material:1.1.0'
-    
+
 }
