@@ -45,6 +45,7 @@ public class MyProfile extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userId;
+    String myPoints, myEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,14 +70,7 @@ public class MyProfile extends AppCompatActivity {
             }
         });
 
-        donation= findViewById(R.id.btn_toDonation);
-        donation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MyProfile.this, PointsDonation.class);
-                startActivity(intent);
-            }
-        });
+
 
         modifyAccount = findViewById(R.id.btnModifyAccount);
         modifyAccount.setOnClickListener(new View.OnClickListener() {
@@ -125,9 +119,11 @@ public class MyProfile extends AppCompatActivity {
                     if(user.containsKey("email")){
                         Object val = user.get("email");
                         email.setText(val.toString());
+                        myEmail = val.toString();
                     }
                     if(user.containsKey("points")){
                         Object val = user.get("points");
+                        myPoints = val.toString();
                         points.setText(val.toString());
                     }
                     if(user.containsKey("address")){
@@ -141,6 +137,20 @@ public class MyProfile extends AppCompatActivity {
                     rating.setText("0");
 
                 }
+            }
+        });
+
+        donation= findViewById(R.id.btn_toDonation);
+        donation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyProfile.this, PointsDonation.class);
+                startActivity(intent);
+                //Intent intent = new Intent(view.getContext(), NoticeboardDetails.class);
+                intent.putExtra("id", userId);
+                intent.putExtra("mypoints", myPoints);
+                intent.putExtra("email", myEmail);
+                startActivity(intent);
             }
         });
 

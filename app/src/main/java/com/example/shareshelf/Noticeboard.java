@@ -16,9 +16,9 @@ public class Noticeboard {
     }
 
     // Constructor for all variables.
-    public Noticeboard(/*String Id,*/ String Category, Date DateStart, String Description,
-                                      Long Duration, DocumentReference IDCreator, String Type,
-                                      String Title, String Stato){
+    public Noticeboard(String Category, Date DateStart, String Description,
+                       Long Duration, DocumentReference IDCreator, String Type,
+                       String Title, String Stato){
         //this.Id = Id;
         this.Categoria = Category;
         this.DataInizio = DateStart;
@@ -61,6 +61,10 @@ public class Noticeboard {
         return Titolo;
     }
 
+    public String getStato() {
+        return Stato;
+    }
+
     // setter method for all variables.
     public void setId(String Id) {this.Id = Id;}
 
@@ -90,10 +94,6 @@ public class Noticeboard {
 
     public void setTitolo(String Title){
         this.Titolo = Title;
-    }
-
-    public String getStato() {
-        return Stato;
     }
 
     public void setStato(String stato) {

@@ -36,6 +36,7 @@ public class AdapterCard extends FirestoreRecyclerAdapter<Noticeboard, AdapterCa
         holder.idCreator.setText(model.getIDCreatore().toString());
         holder.title.setText(model.getTitolo());
         holder.type.setText(model.getTipo());
+        holder.state.setText(model.getStato());
 
     }
 
@@ -49,7 +50,7 @@ public class AdapterCard extends FirestoreRecyclerAdapter<Noticeboard, AdapterCa
         private final TextView idCreator;
         private final TextView title;
         private final TextView type;
-//        private final TextView state;
+        private final TextView state;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -62,8 +63,7 @@ public class AdapterCard extends FirestoreRecyclerAdapter<Noticeboard, AdapterCa
             idCreator = itemView.findViewById(R.id.idCreator);
             title = itemView.findViewById(R.id.title);
             type = itemView.findViewById(R.id.type);
-            // TODO: add
-//            state = itemView
+            state = itemView.findViewById(R.id.stato);
         }
     }
 }
