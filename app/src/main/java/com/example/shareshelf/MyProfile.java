@@ -145,7 +145,7 @@ public class MyProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MyProfile.this, PointsDonation.class);
-                startActivity(intent);
+                //startActivity(intent);
                 //Intent intent = new Intent(view.getContext(), NoticeboardDetails.class);
                 intent.putExtra("id", userId);
                 intent.putExtra("mypoints", myPoints);

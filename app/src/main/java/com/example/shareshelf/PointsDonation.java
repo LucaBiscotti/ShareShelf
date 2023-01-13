@@ -121,7 +121,7 @@ public class PointsDonation extends AppCompatActivity {
                                                 double newPoints = snapshot.getDouble("points") - pointsDonated;
                                                 transaction.update(sfDocRef, "points", newPoints);
 
-                                                double newFriendPoints = snapshot.getDouble("points") + pointsDonated;
+                                                double newFriendPoints = snapshot2.getDouble("points") + pointsDonated;
                                                 transaction.update(sfDocRefFriend, "points", newFriendPoints);
 
                                                 // Success

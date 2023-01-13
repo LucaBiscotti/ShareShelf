@@ -3,7 +3,7 @@ package com.example.shareshelf;
 public class Users {
 
     // variables for storing our data.
-    private String Name, Surname, Email, PhoneNumber, Password, Address, Id;
+    private String Name, Surname, Email, PhoneNumber, Address, Cap;
     private Integer Points;
 
     public Users(){
@@ -11,69 +11,45 @@ public class Users {
         // required for Firebase.
     }
 
-    public Users(String Surname, String Email, String Address, String Name, String PhoneNumber)
+    public Users(String Surname, String Email, String Name, String PhoneNumber, Integer points, String Address, String Cap)
     {
         this.Name = Name;
         this.Surname = Surname;
         this.Email = Email;
         this.PhoneNumber = PhoneNumber;
+        this.Points = points;
         this.Address = Address;
-    }
-    // Constructor for all variables.
-    public Users(String Surname, String Email, String Address, String Name, String Password, Integer Points, String PhoneNumber) {
-        this.Name = Name;
-        this.Surname = Surname;
-        this.Email = Email;
-        this.PhoneNumber = PhoneNumber;
-        this.Password = Password;
-        this.Address = Address;
-        this.Points = Points;
-    }
-
-    // Constructor for all variables.
-    public Users(String Surname, String Email, String Address, String Name, Integer Points, String PhoneNumber) {
-        this.Name = Name;
-        this.Surname = Surname;
-        this.Email = Email;
-        this.PhoneNumber = PhoneNumber;
-        this.Address = Address;
-        this.Points = Points;
+        this.Cap = Cap;
     }
 
     // getter methods for all variables.
-    public String getId() { return Id; }
-
     public String getName() {
-        return Name;
+        return this.Name;
     }
 
     public Integer getPoints(){
-        return Points;
+        return this.Points;
     }
 
     public String getSurname(){
-        return Surname;
+        return this.Surname;
     }
 
     public String getEmail(){
-        return Email;
+        return this.Email;
     }
 
     public String getPhoneNumber(){
-        return PhoneNumber;
-    }
-
-    public String getPassword(){
-        return Password;
+        return this.PhoneNumber;
     }
 
     public String getAddress(){
-        return Address;
+        return this.Address;
     }
 
-    // setter method for all variables.
-    public void setId(String Id) {this.Id = Id;}
+    public String getCap(){return this.Cap;}
 
+    // setter method for all variables.
     public void setName(String Name) {
         this.Name = Name;
     }
@@ -90,10 +66,6 @@ public class Users {
         this.PhoneNumber = PhoneNumber;
     }
 
-    public void setPassword(String Password){
-        this.Password = Password;
-    }
-
     public void setAddress(String Address){
         this.Address = Address;
     }
@@ -102,4 +74,7 @@ public class Users {
         this.Points = Points;
     }
 
+    public void setCap(String cap) {
+        this.Cap = cap;
+    }
 }
