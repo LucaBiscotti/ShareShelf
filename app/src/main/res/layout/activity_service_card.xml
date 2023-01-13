@@ -25,7 +25,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:text="Titolo"
-            android:textColor="@color/black"
+            android:textColor="@color/black" 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/idCreator"
             app:layout_constraintBottom_toTopOf="@+id/type"
