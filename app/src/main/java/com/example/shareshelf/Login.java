@@ -32,7 +32,7 @@ public class Login extends AppCompatActivity {
     TextView createnewAccount, forgotPwd;
     EditText inputEmail, inputPassword;
     Button btnLogin;
-    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    String emailPattern = "[a-zA-Z0-9._-]+@[[a-z]+\\.+[a-z]+]*";
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     AlertDialog.Builder reset_alert;

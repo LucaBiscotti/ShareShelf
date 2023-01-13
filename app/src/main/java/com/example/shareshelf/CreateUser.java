@@ -33,11 +33,12 @@ import java.util.UUID;
 public class CreateUser extends AppCompatActivity {
 
     TextView alreadyHaveaccount;
-    EditText inputEmail, inputPassword, inputConfirmPsw, inputName, inputSurname, inputPhoneNumber, inputAddress;
+    EditText inputEmail, inputPassword, inputConfirmPsw, inputName, inputSurname, inputPhoneNumber, inputAddress, inputCap;
     Button btnNextPageRegistration;
-    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    String emailPattern = "[a-zA-Z0-9._-]+@[[a-z]+\\.+[a-z]+]*";
 
-    private String email, password1, password2, name, lastname, phoneNumber, address;
+
+    private String email, password1, password2, name, lastname, phoneNumber, address, cap;
 
     private FirebaseFirestore db;
     FirebaseAuth fAuth;
@@ -64,6 +65,7 @@ public class CreateUser extends AppCompatActivity {
         inputConfirmPsw=findViewById(R.id.inputPwsConfirmReg2);
         inputAddress = findViewById(R.id.inputAddressUser);
         btnNextPageRegistration=findViewById(R.id.btnNextPageReg);
+        inputCap = findViewById(R.id.input_cap);
 
 
         alreadyHaveaccount.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +92,8 @@ public class CreateUser extends AppCompatActivity {
         lastname =inputSurname.getText().toString().trim();
         phoneNumber=inputPhoneNumber.getText().toString().trim();
         address=inputAddress.getText().toString();
+        cap = inputCap.getText().toString().trim();
+
 
         if(!email.matches(emailPattern)){
             inputEmail.setError("Enter correct email");
@@ -103,33 +107,28 @@ public class CreateUser extends AppCompatActivity {
             inputPassword.setError("Enter propper password");
         } else if (!password1.equals(password2)) {
             inputConfirmPsw.setError("Password not match");
-        } else {
+        } else if (cap.isEmpty()) {
+            inputCap.setError("Need cap!");
+        }
+        else {
 
-            addDataToFirestore(name, lastname, email, password1, address);
+            //sendDataToLocationUser();
+            addDataToFirestore(name, lastname, email, password1, phoneNumber, address, cap);
 
         }
     }
 
-    private void addDataToFirestore(String name, String lastname, String email, String password1, String address) {
+  /*  private void sendDataToLocationUser() {
+        Intent intent = new Intent(CreateUser.this, LocationUser.class);
+        intent.putExtra("email", email);
+        intent.putExtra("name", name);
+        intent.putExtra("lastname", lastname);
+        intent.putExtra("phoneNumber", phoneNumber);
+        intent.putExtra("password", password1);
+        startActivity(intent);
+    }*/
 
-      //  UUID uuidObj = UUID.randomUUID();
-        /*CollectionReference dbUsers = db.collection("Utenti");
-
-        Users user = new Users(lastname, email, address, name, password1, 0, phoneNumber);
-
-
-        dbUsers.add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Toast.makeText(CreateUser.this, "Your user has been added", Toast.LENGTH_SHORT).show();
-                sendUsertoNextActivity();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(CreateUser.this, "Fail to add user \n" + e, Toast.LENGTH_SHORT).show();
-            }
-        });*/
+    private void addDataToFirestore(String name, String lastname, String email, String password1, String phoneNumber, String address, String cap) {
 
         fAuth.createUserWithEmailAndPassword(email, password1).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
@@ -137,7 +136,8 @@ public class CreateUser extends AppCompatActivity {
                 FirebaseUser userId = fAuth.getCurrentUser();
                 Toast.makeText(CreateUser.this, "Account created", Toast.LENGTH_SHORT).show();
                 DocumentReference df = db.collection("Utenti").document(userId.getUid());
-                Users user = new Users(lastname, email, address, name, password1, 0, phoneNumber);
+
+                Users user = new Users(lastname, email, name, phoneNumber, 10, address , cap);
                 //df.set(user);
                 df.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
