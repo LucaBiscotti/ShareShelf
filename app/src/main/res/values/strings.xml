@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ShareShelf</string>
     <string-array name="categories_array">
+        <item>Tutti</item>
         <item>Giardinaggio</item>
         <item>Baby-sitting</item>
         <item>Assistenza anziani</item>
