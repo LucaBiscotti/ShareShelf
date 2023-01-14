@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ModifyNoticeboard">
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/navbar_back_arrow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/inputMin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Minuti"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/textViewDuration2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDuration2" />
+
+    <TextView
+        android:id="@+id/textViewDate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="84dp"
+        android:text="Data:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/inputDate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Inserisci la data"
+        android:inputType="date"
+        app:layout_constraintStart_toStartOf="@+id/textViewDate2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDate2" />
+
+    <TextView
+        android:id="@+id/textViewDuration2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Durata:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/inputDate2"
+        app:layout_constraintTop_toBottomOf="@+id/inputDate2" />
+
+    <EditText
+        android:id="@+id/inputHour2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Ore"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/textViewDuration2"
+        app:layout_constraintTop_toBottomOf="@+id/inputMin2" />
+
+    <EditText
+        android:id="@+id/inputText2"
+        android:layout_width="342dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Aggiungi una descrizione"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Descrizione:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/inputHour2"
+        app:layout_constraintTop_toBottomOf="@+id/inputHour2" />
+
+    <Button
+        android:id="@+id/btn_saveModify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:text="Salva"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelModify"
+        app:layout_constraintTop_toTopOf="@+id/btnCancelModify" />
+
+    <Button
+        android:id="@+id/btnCancelModify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="32dp"
+        android:text="Annulla"
+        app:layout_constraintStart_toStartOf="@+id/inputText2"
+        app:layout_constraintTop_toBottomOf="@+id/inputText2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
