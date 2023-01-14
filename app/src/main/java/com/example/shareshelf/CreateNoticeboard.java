@@ -106,10 +106,7 @@ public class CreateNoticeboard extends AppCompatActivity implements AdapterView.
 
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 if (selectedId == -1) {
-                    Toast.makeText(CreateNoticeboard.this,
-                                    "No answer has been selected",
-                                    Toast.LENGTH_SHORT)
-                            .show();
+                    Toast.makeText(CreateNoticeboard.this, "No answer has been selected", Toast.LENGTH_SHORT).show();
                 }
                 else {
 

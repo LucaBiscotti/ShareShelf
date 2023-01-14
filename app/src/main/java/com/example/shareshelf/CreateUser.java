@@ -113,9 +113,17 @@ public class CreateUser extends AppCompatActivity {
         else {
 
             //sendDataToLocationUser();
+            askForPrivacy();
             addDataToFirestore(name, lastname, email, password1, phoneNumber, address, cap);
 
         }
+    }
+
+    private void askForPrivacy() {
+        // SCRIVI QUI IL CODICE DELLA PRIVACY
+
+
+
     }
 
   /*  private void sendDataToLocationUser() {
@@ -151,6 +159,7 @@ public class CreateUser extends AppCompatActivity {
                         Log.d(TAG, "On failure" + e.toString());
                     }
                 });
+
 
                 sendUsertoNextActivity();
                 //startActivity(new Intent(getApplicationContext(), MainActivity.class));
