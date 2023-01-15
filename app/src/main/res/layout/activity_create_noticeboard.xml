@@ -50,8 +50,13 @@
         android:id="@+id/textViewCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< Updated upstream
         android:layout_marginStart="112dp"
         android:layout_marginTop="24dp"
+=======
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="16dp"
+>>>>>>> Stashed changes
         android:text="Categoria:"
         android:textColor="@color/black"
         android:textSize="20sp"

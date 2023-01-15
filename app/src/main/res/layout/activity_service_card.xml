@@ -21,13 +21,27 @@
             android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+<<<<<<< Updated upstream
             android:layout_marginStart="96dp"
             android:layout_marginBottom="32dp"
+=======
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+>>>>>>> Stashed changes
             android:text="Titolo"
             android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/type"
+<<<<<<< Updated upstream
             app:layout_constraintStart_toEndOf="@+id/idCreator" />
+=======
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="38dp"
+            tools:ignore="MissingConstraints" />
+>>>>>>> Stashed changes
 
         <TextView
             android:id="@+id/type"
@@ -103,9 +117,12 @@
             android:text="id"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+<<<<<<< Updated upstream
             app:layout_constraintTop_toBottomOf="@+id/textViewDuration" />
+=======
+            app:layout_constraintTop_toBottomOf="@+id/textViewDuration"/> />
+>>>>>>> Stashed changes
 
 
 
@@ -120,7 +137,7 @@
             android:text="stato"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/title"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDuration" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idCreator" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
