@@ -1,7 +1,9 @@
 package com.example.shareshelf;
 
+import com.google.firebase.firestore.DocumentReference;
+
 public class Booking {
-    private String IdNoticeboard, IdCandidate, Id;
+    private DocumentReference IdAnnuncio, IdCandidato;
 
     public Booking(){
         // empty constructor
@@ -9,31 +11,27 @@ public class Booking {
     }
 
     // Constructor for all variables.
-    public Booking(/*String Id,*/ String IdNoticeboard, String IdCandidate){
-        //this.Id = Id;
-        this.IdNoticeboard = IdNoticeboard;
-        this.IdCandidate = IdCandidate;
+    public Booking(DocumentReference IdNoticeboard, DocumentReference IdCandidate){
+        this.IdAnnuncio = IdNoticeboard;
+        this.IdCandidato = IdCandidate;
     }
 
     // getter methods for all variables.
-    public String getId(){ return Id;}
 
-    public String getIdNoticeboard() {
-        return IdNoticeboard;
+    public DocumentReference getIdNoticeboard() {
+        return IdAnnuncio;
     }
 
-    public String getIdCandidate() {
-        return IdCandidate;
+    public DocumentReference getIdCandidate() {
+        return IdCandidato;
     }
 
     // setter method for all variables.
-    public void setId(String Id){ this.Id = Id; }
-
-    public void setIdNoticeboard(String IdNoticeboard) {
-        this.IdNoticeboard = IdNoticeboard;
+    public void setIdNoticeboard(DocumentReference IdNoticeboard) {
+        this.IdAnnuncio = IdNoticeboard;
     }
 
-    public void setIdCandidate(String IdCandidate){
-        this.IdCandidate = IdCandidate;
+    public void setIdCandidate(DocumentReference IdCandidate){
+        this.IdCandidato = IdCandidate;
     }
 }

@@ -16,6 +16,13 @@
         android:theme="@style/Theme.ShareShelf"
         tools:targetApi="31">
         <activity
+            android:name=".DetailsNoticeboard"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ModifyProfile"
             android:exported="false">
             <meta-data
