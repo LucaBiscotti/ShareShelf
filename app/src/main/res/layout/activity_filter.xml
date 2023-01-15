@@ -79,7 +79,7 @@
         android:id="@+id/spinner_categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
         android:spinnerMode="dropdown"
         app:layout_constraintStart_toEndOf="@+id/textViewCategory"
@@ -114,49 +114,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/FilterDate" />
 
-    <TextView
-        android:id="@+id/FilterRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Rating:"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/FilterDate"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
-    <CheckBox
-        android:id="@+id/checkBox03"
+    <Button
+        android:id="@+id/btnFilterBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="8dp"
-        android:text="0 - 3"
+        android:text="Annulla"
+        app:layout_constraintBottom_toBottomOf="@+id/include3"
+        android:layout_marginLeft="80dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FilterRating" />
-
-    <CheckBox
-        android:id="@+id/checkBox34"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="8dp"
-        android:text="3 - 4"
-        app:layout_constraintStart_toEndOf="@+id/checkBox03"
-        app:layout_constraintTop_toBottomOf="@+id/FilterRating" />
-
-    <CheckBox
-        android:id="@+id/checkBox45"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="70dp"
-        android:text="4 - 5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.414"
-        app:layout_constraintStart_toEndOf="@+id/checkBox34"
-        app:layout_constraintTop_toBottomOf="@+id/FilterRating" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        />
 
     <Button
         android:id="@+id/btnFilterSave"
@@ -165,8 +133,7 @@
         android:text="Salva"
         app:layout_constraintBottom_toBottomOf="@+id/include3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox34"
-        app:layout_constraintVertical_bias="0.567" />
+        app:layout_constraintStart_toStartOf="@+id/btnFilterBack"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

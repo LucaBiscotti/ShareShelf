@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,12 +32,21 @@ public class Bacheca extends AppCompatActivity {
     private FirestoreRecyclerAdapter<Noticeboard, AdapterCard.ViewHolder> dataRVAdapter;
     ImageView menu, filter;
     View addNotice;
-    Date dateStart;
+    private AdapterCard.RecyclerViewClickListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bacheca);
+
+        listener = new AdapterCard.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                Log.d("Messaggio_test", "aaaaaaaa");
+                Intent intent = new Intent(Bacheca.this, BookedNoticeboard.class);
+                startActivity(intent);
+            }
+        };
 
         menu = findViewById(R.id.btnMenu);
         menu.setOnClickListener(view -> {
@@ -67,13 +77,14 @@ public class Bacheca extends AppCompatActivity {
 
         FirestoreRecyclerOptions<Noticeboard> options = applyFilter(type,date,category);
 
-        dataRVAdapter = new AdapterCard(options);
+        dataRVAdapter = new AdapterCard(options, listener);
 
         // adding horizontal layout manager for our recycler view.
         courseRV.setLayoutManager(new LinearLayoutManager(this));
 
         // setting adapter to our recycler view.
         courseRV.setAdapter(dataRVAdapter);
+
     }
 
     public FirestoreRecyclerOptions<Noticeboard> applyFilter(String type, String date, String category){

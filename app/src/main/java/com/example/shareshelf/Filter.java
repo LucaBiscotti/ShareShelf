@@ -29,7 +29,7 @@ public class Filter extends AppCompatActivity implements AdapterView.OnItemSelec
     Spinner spinner;
     CalendarView date;
     Switch dateSwitch;
-    Button save;
+    Button save, back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +100,17 @@ public class Filter extends AppCompatActivity implements AdapterView.OnItemSelec
                 intent.putExtra("type","" +selectedId);
                 if(dateSwitch.isChecked())
                     intent.putExtra("date","" + new Date(date.getDate()));
-                intent.putExtra("category", category);
+                if(!category.equals("Tutti"))
+                    intent.putExtra("category", category);
+                startActivity(intent);
+            }
+        });
+
+        back = findViewById(R.id.btnFilterBack);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Filter.this, Bacheca.class);
                 startActivity(intent);
             }
         });
