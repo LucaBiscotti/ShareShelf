@@ -49,6 +49,22 @@ public class MyNoticeboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_noticeboard);
+        listener = new AdapterCard.RecyclerViewClickListener() {
+            @Override
+            public void onClick(DocumentSnapshot documentSnapshot, int position) {
+                Noticeboard model = documentSnapshot.toObject(Noticeboard.class);
+                Intent intent = new Intent(MyNoticeboard.this, DetailsMyNoticeboard.class);
+                intent.putExtra("Titolo",model.getTitolo());
+                intent.putExtra("Tipo",model.getTipo());
+                intent.putExtra("Categoria",model.getCategoria());
+                intent.putExtra("Data","" + model.getDataInizio());
+                intent.putExtra("Durata","" + model.getDurata());
+                intent.putExtra("Creatore", model.getIDCreatore().toString());
+                intent.putExtra("Stato",model.getStato());
+                intent.putExtra("Descrizione",model.getDescrizione());
+                startActivity(intent);
+            }
+        };
 
 
         putQuery(true);

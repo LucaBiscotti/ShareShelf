@@ -61,15 +61,6 @@ public class MyProfile extends AppCompatActivity {
             }
         });
 
-        mybooked = findViewById(R.id.btn_toBookedNoticeboard);
-        mybooked.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MyProfile.this, BookedNoticeboard.class);
-                startActivity(intent);
-            }
-        });
-
 
 
         modifyAccount = findViewById(R.id.btnModifyAccount);

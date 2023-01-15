@@ -58,27 +58,10 @@ public class Filter extends AppCompatActivity implements AdapterView.OnItemSelec
 
         date= findViewById(R.id.calendarView);
 
-        date.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
 
-                String msg = "Hai selezionato il giorno: " + i2 + " mese : " + (i1 + 1) + " anno " + i;
-                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-
-
-            }
-        });
 
         dateSwitch = findViewById(R.id.dateSwitch);
-        dateSwitch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(dateSwitch.isChecked())
-                    date.setVisibility(view.VISIBLE);
-                else
-                    date.setVisibility(view.GONE);
-            }
-        });
+
 
 
         save= findViewById(R.id.btnFilterSave);
@@ -99,7 +82,7 @@ public class Filter extends AppCompatActivity implements AdapterView.OnItemSelec
                 Intent intent = new Intent(Filter.this, Bacheca.class);
                 intent.putExtra("type","" +selectedId);
                 if(dateSwitch.isChecked())
-                    intent.putExtra("date","" + new Date(date.getDate()));
+                    intent.putExtra("date","Prenotato" );
                 if(!category.equals("Tutti"))
                     intent.putExtra("category", category);
                 startActivity(intent);

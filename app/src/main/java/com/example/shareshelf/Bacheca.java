@@ -170,8 +170,7 @@ public class Bacheca extends AppCompatActivity {
     private Query dateFilter(String timestamp){
         return FirebaseFirestore.getInstance()
                 .collection("Annunci")
-                .whereEqualTo("dataInizio", timestamp)
-                .whereEqualTo("stato", "In attesa di prenotazioni");
+                .whereEqualTo("stato", timestamp);
     }
 
     private Query typeFilter(int i){
@@ -195,8 +194,7 @@ public class Bacheca extends AppCompatActivity {
         return FirebaseFirestore.getInstance()
                 .collection("Annunci")
                 .whereEqualTo("categoria", category)
-                .whereEqualTo("dataInizio", timestamp)
-                .whereEqualTo("stato", "In attesa di prenotazioni");
+                .whereEqualTo("stato", timestamp);
     }
 
     private Query typeCategoryFilter(int i, String category) {
@@ -224,14 +222,12 @@ public class Bacheca extends AppCompatActivity {
                 return FirebaseFirestore.getInstance()
                         .collection("Annunci")
                         .whereEqualTo("tipo", "offro")
-                        .whereEqualTo("dataInizio", timestamp)
-                        .whereEqualTo("stato", "In attesa di prenotazioni");
+                        .whereEqualTo("stato", timestamp);
             case R.id.btnCercoFilter:
                 return FirebaseFirestore.getInstance()
                         .collection("Annunci")
                         .whereEqualTo("tipo", "cerco")
-                        .whereEqualTo("dataInizio", timestamp)
-                        .whereEqualTo("stato", "In attesa di prenotazioni");
+                        .whereEqualTo("stato", timestamp);
             default:
                 return dateFilter(timestamp);
         }
@@ -243,16 +239,14 @@ public class Bacheca extends AppCompatActivity {
                 return FirebaseFirestore.getInstance()
                         .collection("Annunci")
                         .whereEqualTo("tipo", "offro")
-                        .whereEqualTo("dataInizio", timestamp)
-                        .whereEqualTo("categoria", category)
-                        .whereEqualTo("stato", "In attesa di prenotazioni");
+                        .whereEqualTo("stato", timestamp)
+                        .whereEqualTo("categoria", category);
             case R.id.btnCercoFilter:
                 return FirebaseFirestore.getInstance()
                         .collection("Annunci")
                         .whereEqualTo("tipo", "cerco")
-                        .whereEqualTo("dataInizio", timestamp)
-                        .whereEqualTo("categoria", category)
-                        .whereEqualTo("stato", "In attesa di prenotazioni");
+                        .whereEqualTo("stato", timestamp)
+                        .whereEqualTo("categoria", category);
             default:
                 return categoryDateFilter(category,timestamp);
         }

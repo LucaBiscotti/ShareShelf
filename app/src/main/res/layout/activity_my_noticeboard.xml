@@ -32,37 +32,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:layout_width="211dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="76dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/include3">
 
-        <RadioButton
-            android:id="@+id/myNoticeboardPresent"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:text="Attuali" />
-
-        <RadioButton
-            android:id="@+id/myNoticeboardPast"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Passati" />
-    </RadioGroup>
     <LinearLayout
         android:id="@+id/lnly_rv_mynotice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="55dp"
         tools:layout_editor_absoluteY="1dp">
 
         <androidx.recyclerview.widget.RecyclerView
