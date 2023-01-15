@@ -30,7 +30,7 @@ public class DetailsMyNoticeboard extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     String myId, idNoticeboard, state;
-    String category, description, owner, idCreator, type, title, duration, dateStart;
+    //String category, description, owner, idCreator, type, title, duration, dateStart;
     TextView tv_category, tv_description, tv_owner, tv_type, tv_title, tv_duration, tv_dateStart, tv_state;
     ScrollView sv_description;
     ImageView back;

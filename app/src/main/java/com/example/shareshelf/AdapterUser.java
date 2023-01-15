@@ -152,9 +152,9 @@ public class AdapterUser extends FirestoreRecyclerAdapter<Booking, AdapterUser.V
             }
         });
 
-        context = holder.btn_visit_profile.getContext();
+        //context = holder.btn_visit_profile.getContext();
 
-        holder.btn_visit_profile.setOnClickListener(new View.OnClickListener() {
+        /*holder.btn_visit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Visit profile", Toast.LENGTH_SHORT).show();
@@ -162,7 +162,7 @@ public class AdapterUser extends FirestoreRecyclerAdapter<Booking, AdapterUser.V
                 i.putExtra("id", df.toString());
                 context.startActivity(i);
             }
-        });
+        });*/
 
 
 
