@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DetailsMyNoticeboard extends AppCompatActivity {
-    Button btn_goToListCandidate;
+    Button btn_goToListCandidate, btn_goToModifyNoticeboard;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     String myId, idNoticeboard, state;
@@ -54,6 +54,7 @@ public class DetailsMyNoticeboard extends AppCompatActivity {
         tv_title = findViewById(R.id.tv_title_mydetails);
         tv_duration = findViewById(R.id.tv_duration_mydetails);
         tv_state = findViewById(R.id.tv_state_mydetails);
+        btn_goToModifyNoticeboard = findViewById(R.id.btn_goTo_modify_noticeboard);
 
         idNoticeboard = fStore.collection("Annunci").document().getId();
         DocumentReference doc = fStore.collection("Annunci").document(idNoticeboard);
@@ -138,6 +139,14 @@ public class DetailsMyNoticeboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( DetailsMyNoticeboard.this, MyNoticeboard.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_goToModifyNoticeboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( DetailsMyNoticeboard.this, ModifyNoticeboard.class);
                 startActivity(intent);
             }
         });
