@@ -218,6 +218,16 @@
         android:layout_marginBottom="8dp"
         android:text="Vedi Lista candidati"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_goTo_modify_noticeboard"
+        app:layout_constraintStart_toStartOf="@+id/btn_goTo_modify_noticeboard" />
+
+    <Button
+        android:id="@+id/btn_goTo_modify_noticeboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Modifica annuncio"
+        app:layout_constraintBottom_toTopOf="@+id/btn_goToListCandidate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
