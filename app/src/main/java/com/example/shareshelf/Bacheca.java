@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -31,12 +33,29 @@ public class Bacheca extends AppCompatActivity {
     private FirestoreRecyclerAdapter<Noticeboard, AdapterCard.ViewHolder> dataRVAdapter;
     ImageView menu, filter;
     View addNotice;
-    Date dateStart;
+    private AdapterCard.RecyclerViewClickListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bacheca);
+
+        listener = new AdapterCard.RecyclerViewClickListener() {
+            @Override
+            public void onClick(DocumentSnapshot documentSnapshot, int position) {
+                Noticeboard model = documentSnapshot.toObject(Noticeboard.class);
+                Intent intent = new Intent(Bacheca.this, DetailsNoticeboard.class);
+                intent.putExtra("Titolo",model.getTitolo());
+                intent.putExtra("Tipo",model.getTipo());
+                intent.putExtra("Categoria",model.getCategoria());
+                intent.putExtra("Data","" + model.getDataInizio());
+                intent.putExtra("Durata","" + model.getDurata());
+                intent.putExtra("Creatore", model.getIDCreatore().toString());
+                intent.putExtra("Stato",model.getStato());
+                intent.putExtra("Descrizione",model.getDescrizione());
+                startActivity(intent);
+            }
+        };
 
         menu = findViewById(R.id.btnMenu);
         menu.setOnClickListener(view -> {
@@ -67,13 +86,16 @@ public class Bacheca extends AppCompatActivity {
 
         FirestoreRecyclerOptions<Noticeboard> options = applyFilter(type,date,category);
 
-        dataRVAdapter = new AdapterCard(options);
+        dataRVAdapter = new AdapterCard(options, listener);
+
+
 
         // adding horizontal layout manager for our recycler view.
         courseRV.setLayoutManager(new LinearLayoutManager(this));
 
         // setting adapter to our recycler view.
         courseRV.setAdapter(dataRVAdapter);
+
     }
 
     public FirestoreRecyclerOptions<Noticeboard> applyFilter(String type, String date, String category){
