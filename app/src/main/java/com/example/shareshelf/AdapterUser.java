@@ -158,9 +158,9 @@ public class AdapterUser extends FirestoreRecyclerAdapter<Booking, AdapterUser.V
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Visit profile", Toast.LENGTH_SHORT).show();
-                /*Intent i = new Intent(context, VisitProfile.class);
+                Intent i = new Intent(context, OtherProfile.class);
                 i.putExtra("id", df.toString());
-                context.startActivity(i);*/
+                context.startActivity(i);
             }
         });
 
