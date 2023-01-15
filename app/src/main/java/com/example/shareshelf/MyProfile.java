@@ -40,8 +40,8 @@ import java.util.Map;
 public class MyProfile extends AppCompatActivity {
 
     ImageView menu, modifyAccount;
-    Button mybooked, myfeedback, donation;
-    TextView name, surname, phonenumber, email, rating, points, address;
+    Button mybooked, donation;
+    TextView name, surname, phonenumber, email, points, address;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userId;
@@ -65,7 +65,7 @@ public class MyProfile extends AppCompatActivity {
         mybooked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MyProfile.this, MyNoticeboard.class);
+                Intent intent = new Intent(MyProfile.this, BookedNoticeboard.class);
                 startActivity(intent);
             }
         });
@@ -85,7 +85,6 @@ public class MyProfile extends AppCompatActivity {
         surname = findViewById(R.id.TextViewLastname);
         phonenumber = findViewById(R.id.tv_phoneNumber);
         email = findViewById(R.id.tv_email);
-        rating = findViewById(R.id.tv_rating);
         points = findViewById(R.id.tv_points);
         address = findViewById(R.id.tv_address);
 
@@ -134,7 +133,6 @@ public class MyProfile extends AppCompatActivity {
                         Object val = user.get("phoneNumber");
                         phonenumber.setText(val.toString());
                     }
-                    rating.setText("0");
 
                 }
             }

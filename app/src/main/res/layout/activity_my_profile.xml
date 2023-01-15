@@ -91,63 +91,41 @@
         app:layout_constraintStart_toStartOf="@+id/TextViewPhone"
         app:layout_constraintTop_toBottomOf="@+id/TextViewPhone" />
 
-    <TextView
-        android:id="@+id/TextViewRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:text="Rating: "
-        app:layout_constraintStart_toStartOf="@+id/TextViewEmail"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewEmail" />
 
     <TextView
         android:id="@+id/TextViewPoints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="20sp"
         android:text="I miei punti: "
-        app:layout_constraintStart_toStartOf="@+id/TextViewRating"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewRating" />
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/TextViewEmail"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewEmail" />
 
     <Button
         android:id="@+id/btn_toDonation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="35dp"
         android:text="Dona"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_points"
-        app:layout_constraintTop_toBottomOf="@+id/tv_rating" />
+        app:layout_constraintTop_toTopOf="@+id/tv_email" />
 
     <Button
         android:id="@+id/btn_toBookedNoticeboard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
         android:text="Le mie prenotazioni"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
-
-    <Button
-        android:id="@+id/btn_toFeedback"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="Lista Feedback"
-        app:layout_constraintEnd_toEndOf="@+id/btn_toBookedNoticeboard"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_toBookedNoticeboard"
-        app:layout_constraintTop_toBottomOf="@+id/btn_toBookedNoticeboard" />
 
     <TextView
         android:id="@+id/tv_phoneNumber"
@@ -172,29 +150,18 @@
         app:layout_constraintStart_toEndOf="@+id/TextViewEmail"
         app:layout_constraintTop_toBottomOf="@+id/TextViewPhone" />
 
-    <TextView
-        android:id="@+id/tv_rating"
-        android:layout_width="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/TextViewRating"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewEmail" />
 
     <TextView
         android:id="@+id/tv_points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:text="TextView"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/TextViewPoints"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewRating" />
+        app:layout_constraintTop_toTopOf="@+id/TextViewPoints"
+        tools:layout_editor_absoluteY="352dp" />
 
     <TextView
         android:id="@+id/textViewAddress"
@@ -216,6 +183,7 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:text="TextView"
+
         app:layout_constraintStart_toEndOf="@+id/textViewAddress"
         app:layout_constraintTop_toTopOf="@+id/textViewAddress" />
 
