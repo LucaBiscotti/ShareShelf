@@ -56,5 +56,19 @@
             android:layout_weight="1"
             android:text="Passati" />
     </RadioGroup>
+    <LinearLayout
+        android:id="@+id/lnly_rv_mynotice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        android:layout_marginTop="130dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_my_noticeboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
