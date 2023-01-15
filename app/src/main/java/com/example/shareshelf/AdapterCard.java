@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class AdapterCard extends FirestoreRecyclerAdapter<Noticeboard, AdapterCard.ViewHolder> {
     private static Context context;
@@ -51,7 +52,7 @@ public class AdapterCard extends FirestoreRecyclerAdapter<Noticeboard, AdapterCa
     }
 
     public interface RecyclerViewClickListener{
-        void onClick(View v, int position);
+        void onClick(DocumentSnapshot documentSnapshot, int position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -85,7 +86,7 @@ public class AdapterCard extends FirestoreRecyclerAdapter<Noticeboard, AdapterCa
 
         @Override
         public void onClick(View view) {
-            listener.onClick(view,getBindingAdapterPosition());
+            listener.onClick(getSnapshots().getSnapshot(getBindingAdapterPosition()), getBindingAdapterPosition());
         }
     }
 }
