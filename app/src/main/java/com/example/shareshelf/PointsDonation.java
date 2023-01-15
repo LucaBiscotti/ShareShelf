@@ -117,6 +117,10 @@ public class PointsDonation extends AppCompatActivity {
 
                                                 // Note: this could be done without a transaction
                                                 //       by updating the population using FieldValue.increment()
+                                                if(pointsDonated>snapshot.getDouble("points")){
+                                                    pointsDonated = 0;
+                                                    Toast.makeText(PointsDonation.this, "Non hai punti a sufficienza", Toast.LENGTH_SHORT).show();
+                                                }
                                                 double newPoints = snapshot.getDouble("points") - pointsDonated;
                                                 transaction.update(sfDocRef, "points", newPoints);
 
