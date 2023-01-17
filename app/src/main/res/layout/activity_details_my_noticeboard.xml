@@ -82,8 +82,8 @@
         android:text="Stato: "
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tv4"
-        app:layout_constraintTop_toBottomOf="@+id/tv4" />
+        app:layout_constraintStart_toStartOf="@+id/textViewdcvd2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nameCandidate" />
 
     <TextView
         android:id="@+id/textView9"
@@ -199,8 +199,62 @@
         android:layout_marginBottom="8dp"
         android:text="Modifica annuncio"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_finish"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewdcvd2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Candidato: "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/tv4"
+        app:layout_constraintTop_toBottomOf="@+id/tv4" />
+
+    <TextView
+        android:id="@+id/tv_emailCandidate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/textViewdcvd2"
+        app:layout_constraintTop_toTopOf="@+id/textViewdcvd2" />
+
+    <TextView
+        android:id="@+id/tv_nameCandidate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/tv_emailCandidate"
+        app:layout_constraintTop_toBottomOf="@+id/tv_emailCandidate" />
+
+    <TextView
+        android:id="@+id/tv_lastnameCandidate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_nameCandidate"
+        app:layout_constraintTop_toTopOf="@+id/tv_nameCandidate" />
+
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Finito"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_goTo_modify_noticeboard"
+        app:layout_constraintTop_toTopOf="@+id/btn_goTo_modify_noticeboard" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
