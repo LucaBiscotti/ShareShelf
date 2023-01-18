@@ -23,10 +23,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
@@ -59,7 +61,7 @@ public class MyNoticeboard extends AppCompatActivity {
                 intent.putExtra("Categoria",model.getCategoria());
                 intent.putExtra("Data","" + model.getDataInizio());
                 intent.putExtra("Durata","" + model.getDurata());
-                intent.putExtra("Creatore", model.getIDCreatore().toString());
+                intent.putExtra("IdAnnuncio", "" + documentSnapshot.getReference());
                 intent.putExtra("Stato",model.getStato());
                 intent.putExtra("Descrizione",model.getDescrizione());
                 startActivity(intent);

@@ -36,14 +36,14 @@ public class DetailsMyNoticeboard extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     String idCandidate, idNoticeboard, state;
-    TextView tv_category, tv_description, tv_candidate, tv_type, tv_title, tv_duration, tv_dateStart, tv_state, tv_name, tv_lastname;
+    TextView tv_category, tv_description, tv_type, tv_title, tv_duration, tv_dateStart, tv_state, tv_name, tv_lastname;
     ScrollView sv_description;
     ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_noticeboard);
+        setContentView(R.layout.activity_details_my_noticeboard);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -63,7 +63,6 @@ public class DetailsMyNoticeboard extends AppCompatActivity {
         btn_finish = findViewById(R.id.btn_finish);
 
         idNoticeboard = fStore.collection("Annunci").document().getId();
-        Log.d("Messaggio_test", idNoticeboard);
         DocumentReference doc = fStore.collection("Annunci").document(idNoticeboard);
 
         String title = getIntent().getStringExtra("Titolo");
@@ -73,10 +72,8 @@ public class DetailsMyNoticeboard extends AppCompatActivity {
         String durata = getIntent().getStringExtra("Durata");
         String statey = getIntent().getStringExtra("Stato");
         String description = getIntent().getStringExtra("Descrizione");
-        String emailCandidate = getIntent().getStringExtra("Email");
+        String idAnnuncio = getIntent().getStringExtra("IdAnnuncio");
         String idBooking = getIntent().getStringExtra("idPrenotazione");
-
-
 
         tv_title.setText(title);
         tv_type.setText(type);
@@ -85,21 +82,20 @@ public class DetailsMyNoticeboard extends AppCompatActivity {
         tv_duration.setText(durata);
         tv_state.setText(statey);
         tv_description.setText(description);
-        tv_candidate.setText(emailCandidate);
 
 
-        CollectionReference usersRef = fStore.collection("Utenti");
-        Query query = usersRef.whereEqualTo("email", emailCandidate);
+        CollectionReference usersRef = fStore.collection("Prenotazioni");
+        Query query = usersRef.whereEqualTo("idNoticeboard", idNoticeboard);
 
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                Log.d("Messaggio_test", "lol è noi");
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        String userId = document.getId();
-                        idCandidate = userId;
+                        String userId = document.getString("idCandidate");
+                        Log.d("Messaggio_test", "lol è lui" + userId);
                         final DocumentReference sfDocRefFriend = fStore.collection("Utenti").document(userId);
-
                         sfDocRefFriend.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -126,9 +122,15 @@ public class DetailsMyNoticeboard extends AppCompatActivity {
 
                     }
                 }
+                else{
+                    tv_name.setText("Nessuno prenotato");
+                    tv_lastname.setText("Nessuno prenotato");
+                }
             }
         });
 
+
+/*
         btn_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -179,6 +181,8 @@ public class DetailsMyNoticeboard extends AppCompatActivity {
                             }
                         });
 
+
+                /*
                 fStore.collection("Prenotazioni").document(idBooking)
                         .delete()
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -193,8 +197,12 @@ public class DetailsMyNoticeboard extends AppCompatActivity {
                                 Log.w("TAG", "Error deleting document", e);
                             }
                         });
+
             }
         });
+
+
+ */
 
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -212,6 +220,8 @@ public class DetailsMyNoticeboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
     }
 }

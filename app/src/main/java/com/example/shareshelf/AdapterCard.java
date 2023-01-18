@@ -44,7 +44,7 @@ public class AdapterCard extends FirestoreRecyclerAdapter<Noticeboard, AdapterCa
         holder.dateStart.setText(model.getDataInizio().toString());
         holder.description.setText(model.getDescrizione());
         holder.duration.setText(model.getDurata().toString());
-        holder.idCreator.setText(model.getIDCreatore().toString());
+        //holder.idCreator.setText(model.getIDCreatore().toString());
         holder.title.setText(model.getTitolo());
         holder.type.setText(model.getTipo());
         holder.state.setText(model.getStato());
